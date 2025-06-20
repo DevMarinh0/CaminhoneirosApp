@@ -108,7 +108,7 @@ export default function CadastroMotorista() {
     try {
       console.log('Iniciando upload de fotos...');
       const formData = new FormData();
-      
+
       fotos.forEach((foto, index) => {
         console.log(`Preparando upload: ${foto.name} (${foto.type})`);
         formData.append('fotos', {
@@ -120,11 +120,11 @@ export default function CadastroMotorista() {
 
       const url = getFullUrl('/upload');
       console.log('Enviando para:', url);
-      
+
       // Criar um controller para abortar a requisição após um tempo
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 segundos de timeout
-      
+
       const response = await fetch(url, {
         method: 'POST',
         body: formData,
@@ -134,7 +134,7 @@ export default function CadastroMotorista() {
         },
         signal: controller.signal
       });
-      
+
       clearTimeout(timeoutId);
 
       if (!response.ok) {
@@ -175,13 +175,13 @@ export default function CadastroMotorista() {
 
       // 2. Criar o cadastro com as URLs das fotos
       const dataCadastro = new Date().toLocaleDateString('pt-BR');
-      
+
       const url = getFullUrl('/cadastros');
       console.log('Enviando cadastro para:', url);
-      
+
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 segundos de timeout
-      
+
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -197,7 +197,7 @@ export default function CadastroMotorista() {
         }),
         signal: controller.signal
       });
-      
+
       clearTimeout(timeoutId);
 
       if (!response.ok) {
@@ -209,8 +209,8 @@ export default function CadastroMotorista() {
         'Cadastro realizado',
         'Motorista cadastrado com sucesso!',
         [
-          { 
-            text: 'OK', 
+          {
+            text: 'OK',
             onPress: () => {
               // Limpar formulário
               setNome('');
@@ -218,7 +218,7 @@ export default function CadastroMotorista() {
               setPlaca('');
               setDestino('');
               setFotos([]);
-              
+
               // Voltar para a tela inicial
               router.push('/');
             }
@@ -251,7 +251,7 @@ export default function CadastroMotorista() {
       </View>
       <Ionicons name="person-add" size={isTablet ? 72 : 48} color="#023e8a" style={{ marginBottom: isTablet ? 20 : 10 }} />
       <Text style={styles.titulo}>Cadastro de Motorista</Text>
-      
+
       <View style={styles.formContainer}>
         <Text style={styles.label}>Nome do Motorista</Text>
         <TextInput
@@ -261,7 +261,7 @@ export default function CadastroMotorista() {
           placeholder="Digite o nome completo"
           placeholderTextColor="#888"
         />
-        
+
         <Text style={styles.label}>Transportadora</Text>
         <TextInput
           style={styles.input}
@@ -270,7 +270,7 @@ export default function CadastroMotorista() {
           placeholder="Nome da transportadora"
           placeholderTextColor="#888"
         />
-        
+
         <Text style={styles.label}>Placa do Cavalo</Text>
         <TextInput
           style={styles.input}
@@ -280,7 +280,7 @@ export default function CadastroMotorista() {
           placeholderTextColor="#888"
           autoCapitalize="characters"
         />
-        
+
         <Text style={styles.label}>Destino</Text>
         <TextInput
           style={styles.input}
@@ -289,7 +289,7 @@ export default function CadastroMotorista() {
           placeholder="Cidade/Estado de destino"
           placeholderTextColor="#888"
         />
-        
+
         <Text style={styles.label}>Fotos (máx. 6)</Text>
         <View style={styles.botoesContainer}>
           <Pressable
@@ -303,7 +303,7 @@ export default function CadastroMotorista() {
             <Ionicons name="images" size={isTablet ? 28 : 22} color="#fff" />
             <Text style={styles.textoBotaoFoto}>Galeria</Text>
           </Pressable>
-          
+
           <Pressable
             onPress={tirarFoto}
             style={({ pressed }) => [
@@ -316,7 +316,7 @@ export default function CadastroMotorista() {
             <Text style={styles.textoBotaoFoto}>Câmera</Text>
           </Pressable>
         </View>
-        
+
         {fotos.length > 0 && (
           <View style={styles.fotosContainer}>
             {fotos.map((foto, index) => (
@@ -333,9 +333,8 @@ export default function CadastroMotorista() {
             ))}
           </View>
         )}
-        
-        <Text style={styles.infoText}>API URL: {API_URL}</Text>
-        
+
+
         <Botao
           texto="Cadastrar Motorista"
           onPress={cadastrar}

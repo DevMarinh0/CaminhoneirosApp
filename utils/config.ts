@@ -1,6 +1,6 @@
 // Configuração da API URL
 // URL do backend hospedado no Render
-const BACKEND_URL = 'https://caminhoneiros-backend.onrender.com';
+const BACKEND_URL = 'https://caminhoneirosapp.onrender.com';
 
 // Usar sempre o backend hospedado
 export const API_URL = BACKEND_URL;

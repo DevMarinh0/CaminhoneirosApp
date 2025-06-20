@@ -8,7 +8,7 @@ module.exports = {
     scheme: "myapp",
     userInterfaceStyle: "automatic",
     splash: {
-      image: "./assets/images/splash-icon.png",
+      image: "./assets/images/icon.png",
       resizeMode: "contain",
       backgroundColor: "#78BBFF"
     },
@@ -28,7 +28,11 @@ module.exports = {
       permissions: [
         "INTERNET",
         "ACCESS_NETWORK_STATE"
-      ]
+      ],
+      statusBar: {
+        barStyle: "light-content",
+        backgroundColor: "#78BBFF"
+      }
     },
     web: {
       bundler: "metro",
@@ -40,8 +44,16 @@ module.exports = {
     extra: {
       apiUrl: "https://caminhoneiros-backend.onrender.com",
       eas: {
-        projectId: "your-project-id"
+        projectId: "460afa96-4595-4c00-87a4-607d46a2be91"
       }
+    },
+    updates: {
+      url: "https://u.expo.dev/460afa96-4595-4c00-87a4-607d46a2be91",
+      enabled: true,
+      checkAutomatically: "ON_LOAD"
+    },
+    runtimeVersion: {
+      policy: "sdkVersion"
     }
   }
 };

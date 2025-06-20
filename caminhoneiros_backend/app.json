@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Caminhoneiros App",
+    "slug": "caminhoneiros-app",
+    "version": "1.0.0",
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "SEU-ID-REAL-AQUI"
+      }
+    }
+  }
+}
